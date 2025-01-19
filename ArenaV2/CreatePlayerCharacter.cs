@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ArenaV2
 {
-    internal class CreatePlayerCharacter
+    public class CreatePlayerCharacter
     {
         public static string IntroText = "Zvol si prosím staty characteru";
        

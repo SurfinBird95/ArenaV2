@@ -2,5 +2,9 @@
 
 Intro.DisplayIntroText();
 CreatePlayerCharacter cpp = new CreatePlayerCharacter();
-var character = cpp.ReadInputLine();
+var playerCharacter = cpp.ReadInputLine();
+
+
+CreateNPCCharacter cnc = new CreateNPCCharacter();
+cnc.NPCCharacterGenerator(playerCharacter);
 Console.WriteLine();

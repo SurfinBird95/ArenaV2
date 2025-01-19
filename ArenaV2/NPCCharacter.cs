@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ArenaV2
 {
-    internal class NPCCharacter : CharacterProperties
+    public class NPCCharacter : CharacterProperties
     {
         // Constructor
         public NPCCharacter(string name, int level, int health, int energy, int strength, int agility, int stamina, int charisma, int gold, int experience) :
