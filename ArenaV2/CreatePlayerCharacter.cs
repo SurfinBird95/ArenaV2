@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,7 +40,8 @@ namespace ArenaV2
                 }
             }
 
-            PlayerCharacter character = new PlayerCharacter(name, 1, 10*(strength+1), 10 * (stamina+1), strength, agility, stamina, charisma, 0, 0);
+            PlayerCharacter character = new PlayerCharacter(name, 1, strength, agility, stamina, charisma, 0, 0);
+            character.PrintPlayerCharacter();
             return character;
         }
 
