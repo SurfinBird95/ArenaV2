@@ -9,7 +9,7 @@ namespace ArenaV2
 {
     public class CreatePlayerCharacter
     {
-        public static string IntroText = "Zvol si prosím staty characteru";
+        public static string IntroText = "Please choose your character's stats";
        
         public void PrintCharacter(PlayerCharacter character)
         {
@@ -28,7 +28,7 @@ namespace ArenaV2
 
             while (strength + agility + stamina + charisma != totalStats)
             {
-                Console.WriteLine($"Choose your Strength, Agility, Stamina and Charisma, so you have {totalStats} points total");
+                Console.WriteLine($"\nChoose your Strength, Agility, Stamina and Charisma, so you have {totalStats} points total");
                 strength = ReadInputStats("Strength");
                 agility = ReadInputStats("Agility");
                 stamina = ReadInputStats("Stamina");

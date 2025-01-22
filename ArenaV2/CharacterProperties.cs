@@ -25,6 +25,7 @@ namespace ArenaV2
         public int Gold { get; set; }
         public int Experience { get; set; }
 
+
         public CharacterProperties(string name, int level, int strength, int agility, int stamina, int charisma, int gold, int experience)
         {
             Name = name;
