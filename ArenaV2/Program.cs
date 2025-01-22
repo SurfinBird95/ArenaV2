@@ -9,5 +9,6 @@ CreateNPCCharacter cnc = new CreateNPCCharacter();
 cnc.NPCCharacterGenerator(playerCharacter);
 var npcCharacter = cnc.NPCCharacterGenerator(playerCharacter);
 
-Fight.FightCalculator(playerCharacter, npcCharacter);
+Fight fight = new Fight();
+fight.FightCalculator(playerCharacter, npcCharacter);
 Console.WriteLine();

@@ -9,21 +9,6 @@ namespace ArenaV2
 {
     public class Fight
     {
-        public int CreateArenaPlayerStats(PlayerCharacter playerCharacter)
-        {
-            int playerHealth = playerCharacter.Health;
-            int playerStamina = playerCharacter.Stamina;
-            return playerHealth;
-        }
-
-        public int CreateArenaNPCStats(NPCCharacter npcCharacter)
-        {
-            int npcHealth = npcCharacter.Health;
-            int npcStamina = npcCharacter.Stamina;
-            return npcHealth;
-        }
-
-
         private int FightOrderRNG()
         {
             Random random = new Random();
@@ -37,46 +22,101 @@ namespace ArenaV2
             return hitChance;
         }
 
+        private int Round(string attackerName, int attackerStrength, string deffenderName, int deffenderHealth)
+        {
+            double chanceToHit = CalculateChanceToHit();
+            Random random = new Random();
+            double chanceToBeat = random.NextDouble();
+            //Console.WriteLine($"This is chance: {chanceToBeat}");
+            if (chanceToBeat < chanceToHit)
+            {
+                deffenderHealth = deffenderHealth - attackerStrength;
+                Console.WriteLine($"{deffenderName} hit, his health dropped to {deffenderHealth}");
+            }
+            else
+            {
+                Console.WriteLine($"{attackerName} missed the enemy");
+            }
+            return deffenderHealth;
+        }
+
         public void FightCalculator(PlayerCharacter playerCharacter, NPCCharacter npcCharacter)
         {
+            bool playerTurn = false;
             int WhoseTurn = FightOrderRNG();
-            int playerHealth = CreateArenaPlayerStats((PlayerCharacter)playerCharacter);
-            int npcHealth = CreateArenaNPCStats((NPCCharacter)npcCharacter);
+            int playerHealth = playerCharacter.Health;
+            int npcHealth = npcCharacter.Health;
 
 
-            while (playerHealth > 0 && npcHealth > 0) ;
+            while (playerHealth > 0 && npcHealth > 0)
             {
+                string attackerName;
+                int attackerStrength;
+                string deffenderName;
+                int deffenderHealth;
                 if (WhoseTurn % 2 == 0)
                 {
-                    double chanceToHit = CalculateChanceToHit();
-                    Random random = new Random();
-                    double chanceToBeat = random.Next(0, 1);
-                    if (chanceToBeat < chanceToHit)
-                    {
-                        npcHealth = npcHealth - playerCharacter.Strength;
-                        Console.WriteLine("Enemy hit, his health dropped to " + npcHealth);
-                    }
-                    else
-                    {
-                        Console.WriteLine("You've missed the enemy");
-                    }
+                    attackerName = playerCharacter.Name;
+                    attackerStrength = playerCharacter.Strength;
+                    deffenderName = npcCharacter.Name;
+                    deffenderHealth = npcHealth;
                 }
 
-                else if (WhoseTurn % 2 != 0) ;
+                else
                 {
-                    double chanceToHit = CalculateChanceToHit();
-                    Random random = new Random();
-                    double chanceToBeat = random.Next(0, 1);
-                    if (chanceToBeat < chanceToHit)
-                    {
-                        playerHealth = playerHealth - npcCharacter.Strength;
-                        Console.WriteLine("You are hit, your health dropped to " + playerHealth);
-                    }
-                    else
-                    {
-                        Console.WriteLine("The enemy missed you");
-                    }
+                    attackerName = npcCharacter.Name;
+                    attackerStrength = npcCharacter.Strength;
+                    deffenderName = playerCharacter.Name;
+                    deffenderHealth = playerHealth;
                 }
+                var newDeffenderHealth = Round(attackerName, attackerStrength, deffenderName, deffenderHealth);
+
+                if (WhoseTurn % 2 == 0)
+                {
+                    npcHealth = newDeffenderHealth;
+                }
+                else
+                {
+                    playerHealth = newDeffenderHealth;
+                }
+
+
+                    //}
+                    //    if (WhoseTurn % 2 == 0)
+                    //{
+                    //    double chanceToHit = CalculateChanceToHit();
+                    //    Random random = new Random();
+                    //    double chanceToBeat = random.Next(0, 1);
+                    //    Console.WriteLine($"This is chance: {chanceToBeat}");
+                    //    if (chanceToBeat < chanceToHit)
+                    //    {
+                    //        npcHealth = npcHealth - playerCharacter.Strength;
+                    //        Console.WriteLine("Enemy hit, his health dropped to " + npcHealth);
+                    //    }
+                    //    else
+                    //    {
+                    //        Console.WriteLine("You've missed the enemy");
+                    //    }
+                    //}
+
+                    //else
+                    //{
+                    //    double chanceToHit = CalculateChanceToHit();
+                    //    Random random = new Random();
+                    //    double chanceToBeat = random.Next(0, 1);
+                    //    Console.WriteLine($"This is chance (but enemy): {chanceToBeat}");
+                    //    if (chanceToBeat < chanceToHit)
+                    //    {
+                    //        playerHealth = playerHealth - npcCharacter.Strength;
+                    //        Console.WriteLine("You are hit, your health dropped to " + playerHealth);
+                    //    }
+                    //    else
+                    //    {
+                    //        Console.WriteLine("The enemy missed you");
+                    //    }
+                    //}
+
+                    WhoseTurn++;
             }
         }
         
