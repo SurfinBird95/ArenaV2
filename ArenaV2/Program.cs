@@ -7,7 +7,7 @@ var playerCharacter = cpp.ReadInputLine();
 
 CreateNPCCharacter cnc = new CreateNPCCharacter();
 cnc.NPCCharacterGenerator(playerCharacter);
+var npcCharacter = cnc.NPCCharacterGenerator(playerCharacter);
 
-
-//Fight.FightCalculator(playerCharacter, cnc);
+Fight.FightCalculator(playerCharacter, npcCharacter);
 Console.WriteLine();

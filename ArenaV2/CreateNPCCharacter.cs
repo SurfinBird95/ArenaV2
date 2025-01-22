@@ -10,7 +10,7 @@ namespace ArenaV2
 {
     public class CreateNPCCharacter
     {
-        public void NPCCharacterGenerator(PlayerCharacter PlayerStats)
+        public NPCCharacter NPCCharacterGenerator(PlayerCharacter PlayerStats)
         {
             double NPCDifficulty = 0.7;
             int PlayerCharPoints = PlayerStats.Agility + PlayerStats.Strength + PlayerStats.Stamina + PlayerStats.Charisma;
@@ -43,6 +43,7 @@ namespace ArenaV2
             }
 
             NPCStats.PrintNPCCharacter();
+            return NPCStats;
         }
 
         private int CharRandomNumberGenerator()
