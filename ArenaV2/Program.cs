@@ -17,8 +17,8 @@ while (playerCharacter.Health > 0)
     cnc.NPCCharacterGenerator(playerCharacter);
     var npcCharacter = cnc.NPCCharacterGenerator(playerCharacter);
 
+    //Thread.Sleep(1000);
     fight.FightCalculator(playerCharacter, npcCharacter);
-    Console.WriteLine();
     LevelUp levelUp = new LevelUp();
     levelUp.LvlUpCheck(playerCharacter);
 }

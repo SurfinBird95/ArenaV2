@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,13 +58,18 @@ namespace ArenaV2
                         playerCharacter.Charisma = charisma;
                         break;
                 }
-                
 
 
-                if (strength + agility + stamina + charisma != totalStats+1)
+
+                if (strength + agility + stamina + charisma != totalStats + 1)
                 {
                     Console.WriteLine($"You have not typed a number to lvl up one of your abilities");
                 }
+                else
+                {
+                    Console.WriteLine("\nYour new stats are:\nStrength: " + strength + "\nAgility:" + agility + "\nStamina: " + stamina + "\nCharisma: " + charisma + "\n");
+                }
+                
             }
         }
 
