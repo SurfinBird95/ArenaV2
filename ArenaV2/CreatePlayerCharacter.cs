@@ -41,7 +41,12 @@ namespace ArenaV2
             }
 
             PlayerCharacter character = new PlayerCharacter(name, 1, strength, agility, stamina, charisma, 0, 0);
-            character.PrintPlayerCharacter();
+
+            character.CurrentHealth = character.MaxHealth;
+            character.CurrentEnergy = character.MaxEnergy;
+            character.NameColor = ConsoleColor.Green;
+
+            character.PrintCharacter();
             return character;
         }
 

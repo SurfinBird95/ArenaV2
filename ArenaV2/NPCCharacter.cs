@@ -15,9 +15,12 @@ namespace ArenaV2
         { 
         }
 
-        public void PrintNPCCharacter()
+        public override void PrintCharacter()
         {
-            Console.WriteLine("Enemy has: \n" + this.Health + " max health\n" + this.Agility + " agility\n" + this.Strength + " strength\n" + this.Stamina + " stamina\n" + this.Energy + " max energy\n" + this.Charisma + " charisma");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("Enemy");
+            Console.ForegroundColor = ConsoleColor.Gray;
+            base.PrintCharacter();
         }
     }
 }

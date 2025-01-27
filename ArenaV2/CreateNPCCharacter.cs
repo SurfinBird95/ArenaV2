@@ -42,7 +42,11 @@ namespace ArenaV2
                 }
             }
 
-            NPCStats.PrintNPCCharacter();
+            NPCStats.CurrentHealth = NPCStats.MaxHealth;
+            NPCStats.CurrentEnergy = NPCStats.MaxEnergy;
+            NPCStats.NameColor = ConsoleColor.Red;
+
+            NPCStats.PrintCharacter();
             return NPCStats;
         }
 

@@ -11,16 +11,23 @@ var playerCharacter = cpp.ReadInputLine();
 
 Fight fight = new Fight();
 
-while (playerCharacter.Health > 0)
+while (playerCharacter.MaxHealth > 0)
 {
+    Console.Clear();
+    playerCharacter.CurrentHealth = playerCharacter.MaxHealth;
+    playerCharacter.CurrentEnergy = playerCharacter.MaxEnergy;
+
     CreateNPCCharacter cnc = new CreateNPCCharacter();
-    cnc.NPCCharacterGenerator(playerCharacter);
     var npcCharacter = cnc.NPCCharacterGenerator(playerCharacter);
 
     //Thread.Sleep(1000);
     fight.FightCalculator(playerCharacter, npcCharacter);
     LevelUp levelUp = new LevelUp();
     levelUp.LvlUpCheck(playerCharacter);
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.WriteLine("ROUND OVER");
+    Console.ForegroundColor = ConsoleColor.Gray;
+    Thread.Sleep(5000);
 }
 
 Console.WriteLine();
