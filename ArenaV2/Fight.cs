@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -80,44 +81,20 @@ namespace ArenaV2
                     playerHealth = newDeffenderHealth;
                 }
 
-
-                    //}
-                    //    if (WhoseTurn % 2 == 0)
-                    //{
-                    //    double chanceToHit = CalculateChanceToHit();
-                    //    Random random = new Random();
-                    //    double chanceToBeat = random.Next(0, 1);
-                    //    Console.WriteLine($"This is chance: {chanceToBeat}");
-                    //    if (chanceToBeat < chanceToHit)
-                    //    {
-                    //        npcHealth = npcHealth - playerCharacter.Strength;
-                    //        Console.WriteLine("Enemy hit, his health dropped to " + npcHealth);
-                    //    }
-                    //    else
-                    //    {
-                    //        Console.WriteLine("You've missed the enemy");
-                    //    }
-                    //}
-
-                    //else
-                    //{
-                    //    double chanceToHit = CalculateChanceToHit();
-                    //    Random random = new Random();
-                    //    double chanceToBeat = random.Next(0, 1);
-                    //    Console.WriteLine($"This is chance (but enemy): {chanceToBeat}");
-                    //    if (chanceToBeat < chanceToHit)
-                    //    {
-                    //        playerHealth = playerHealth - npcCharacter.Strength;
-                    //        Console.WriteLine("You are hit, your health dropped to " + playerHealth);
-                    //    }
-                    //    else
-                    //    {
-                    //        Console.WriteLine("The enemy missed you");
-                    //    }
-                    //}
-
-                    WhoseTurn++;
+                WhoseTurn++;
             }
+
+            if (npcHealth <= 0)
+            {
+                Console.WriteLine("You have defeated the Enemy");
+                playerCharacter.Gold = playerCharacter.Gold + playerCharacter.Charisma * 10;
+                playerCharacter.Experience = playerCharacter.Experience + npcCharacter.Level * 10;
+            }
+            else
+            {
+                Console.WriteLine("You have been defeated");
+            }
+
         }
         
     }
