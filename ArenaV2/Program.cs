@@ -27,7 +27,7 @@ while (playerCharacter.MaxHealth > 0)
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine("ROUND OVER");
     Console.ForegroundColor = ConsoleColor.Gray;
-    Thread.Sleep(5000);
+    Thread.Sleep(2000);
 }
 
 Console.WriteLine();
