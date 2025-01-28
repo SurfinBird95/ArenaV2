@@ -35,15 +35,18 @@ namespace ArenaV2
                 if (chanceToBeat < chanceToHit)
                 {
                     deffender.CurrentHealth = deffender.CurrentHealth - attacker.Strength;
+                    PrintCharacterName(attacker);
+                    Console.Write(" hit ");
                     PrintCharacterName(deffender);
-                    Console.WriteLine($" hit, his health dropped to {deffender.CurrentHealth}");
+                    Console.WriteLine($", his health dropped to {deffender.CurrentHealth}");
                 }
                 else
                 {
                     PrintCharacterName(attacker);
                     Console.WriteLine($" missed the enemy");
                 }
-                Console.WriteLine("Attackers energy is " + attacker.CurrentEnergy);
+                PrintCharacterName(attacker);
+                Console.WriteLine("'s energy is " + attacker.CurrentEnergy);
                 attacker.CurrentEnergy = attacker.CurrentEnergy - 10;
                 return;
             }
@@ -63,37 +66,6 @@ namespace ArenaV2
             Console.Write(character.Name);
             Console.ForegroundColor = ConsoleColor.Gray;
         }
-
-
-        //private int Round(string attackerName, int attackerStrength, int attackerAgility, int attackerStamina, int attackerEnergy, string deffenderName, int deffenderAgility, int deffenderHealth)
-        //{
-        //    double chanceToHit = CalculateChanceToHit(attackerAgility, deffenderAgility);
-        //    Random random = new Random();
-        //    double chanceToBeat = random.NextDouble();
-        //    //Console.WriteLine($"This is chance: {chanceToBeat}");
-        //    if (attackerEnergy >= 10)
-        //    {
-        //        if (chanceToBeat < chanceToHit)
-        //        {
-        //            deffenderHealth = deffenderHealth - attackerStrength;
-        //            Console.WriteLine($"{deffenderName} hit, his health dropped to {deffenderHealth}");
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine($"{attackerName} missed the enemy");
-        //        }
-        //        Console.WriteLine("Attackers energy is " + attackerEnergy);
-        //        attackerEnergy = attackerEnergy - 10;
-        //        return deffenderHealth;
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine($"{attackerName} is too exhausted to attack");
-        //    }
-        //    int staminaWeight = 1;
-        //    attackerEnergy = attackerEnergy + attackerStamina * staminaWeight;
-        //    return deffenderHealth;
-        //}
 
         public void FightCalculator(PlayerCharacter playerCharacter, NPCCharacter npcCharacter)
         {
@@ -115,49 +87,6 @@ namespace ArenaV2
                     Round(playerCharacter, npcCharacter);
                 }
                     
-                //string attackerName;
-                //int attackerStrength;
-                //int attackerAgility;
-                //int attackerStamina;
-                //int attackerEnergy;
-                //string deffenderName;
-                //int deffenderAgility;
-                //int deffenderHealth;
-                //if (WhoseTurn % 2 == 0)
-                //{
-                //    attackerName = playerCharacter.Name;
-                //    attackerStrength = playerCharacter.Strength;
-                //    attackerAgility = playerCharacter.Agility;
-                //    attackerStamina = playerCharacter.Stamina;
-                //    attackerEnergy = playerCharacter.MaxEnergy;
-                //    deffenderName = npcCharacter.Name;
-                //    deffenderAgility = npcCharacter.Agility;
-                //    deffenderHealth = npcHealth;
-                //}
-
-                //else
-                //{
-                //    attackerName = npcCharacter.Name;
-                //    attackerStrength = npcCharacter.Strength;
-                //    attackerAgility = npcCharacter.Agility;
-                //    attackerStamina = npcCharacter.Stamina;
-                //    attackerEnergy = npcCharacter.MaxEnergy;
-                //    deffenderName = playerCharacter.Name;
-                //    deffenderAgility = playerCharacter.Agility;
-                //    deffenderHealth = playerHealth;
-                //}
-                //var newDeffenderHealth = Round(attackerName, attackerStrength, attackerAgility, attackerStamina, attackerEnergy, deffenderName, deffenderAgility, deffenderHealth);
-
-                //if (WhoseTurn % 2 == 0)
-                //{
-                //    npcHealth = newDeffenderHealth;
-                    
-                //}
-                //else
-                //{
-                //    playerHealth = newDeffenderHealth;
-                //}
-
                 WhoseTurn++;
             }
 
