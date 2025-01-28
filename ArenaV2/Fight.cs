@@ -30,7 +30,7 @@ namespace ArenaV2
             double chanceToHit = CalculateChanceToHit(attacker.Agility, deffender.Agility);
             Random random = new Random();
             double chanceToBeat = random.NextDouble();
-            if (attacker.CurrentEnergy >= 10)
+            if (attacker.CurrentEnergy >= attacker.Strength)
             {
                 if (chanceToBeat < chanceToHit)
                 {
@@ -43,11 +43,12 @@ namespace ArenaV2
                 else
                 {
                     PrintCharacterName(attacker);
-                    Console.WriteLine($" missed the enemy");
+                    Console.WriteLine($" missed the opponent");
                 }
-                PrintCharacterName(attacker);
-                Console.WriteLine("'s energy is " + attacker.CurrentEnergy);
-                attacker.CurrentEnergy = attacker.CurrentEnergy - 10;
+                
+                attacker.CurrentEnergy = attacker.CurrentEnergy - attacker.Strength;
+                //PrintCharacterName(attacker);
+                //Console.WriteLine("'s energy is " + attacker.CurrentEnergy);
                 return;
             }
             else
@@ -69,7 +70,7 @@ namespace ArenaV2
 
         public void FightCalculator(PlayerCharacter playerCharacter, NPCCharacter npcCharacter)
         {
-            bool playerTurn = false;
+            //bool playerTurn = false;
             int WhoseTurn = FightOrderRNG();
             //int playerHealth = playerCharacter.MaxHealth;
             //int npcHealth = npcCharacter.MaxHealth;

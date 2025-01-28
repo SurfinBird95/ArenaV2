@@ -18,8 +18,15 @@ namespace ArenaV2
 
         public PlayerCharacter ReadInputLine()
         {
-            Console.WriteLine("Choose your Name");
-            string name = Console.ReadLine();
+            string name = "";
+
+            while (string.IsNullOrEmpty(name))
+            {
+                Console.WriteLine("Choose your Name");
+                string nameAux = Console.ReadLine();
+                name = nameAux;
+            }
+            
             int strength = 0;
             int agility = 0;
             int stamina = 0;
