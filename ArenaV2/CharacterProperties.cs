@@ -28,7 +28,7 @@ namespace ArenaV2
         public int Experience { get; set; }
         public ConsoleColor NameColor { get; set; }
 
-
+        public WeaponProperties Weapon = Shop.Weapons[0];
 
         public CharacterProperties(string name, int level, int strength, int agility, int stamina, int charisma, int gold, int experience)
         {
@@ -44,7 +44,7 @@ namespace ArenaV2
 
         public virtual void PrintCharacter()
         {
-            Console.WriteLine(" character has: \n" + this.CurrentHealth + "/" + this.MaxHealth + " health\n" + this.Agility + " agility\n" + this.Strength + " strength\n" + this.Stamina + " stamina\n" + this.CurrentEnergy + "/" + this.MaxEnergy + " energy\n" + this.Charisma + " charisma\n");
+            Console.WriteLine(" character has: \n" + this.CurrentHealth + "/" + this.MaxHealth + " health\n" + this.Agility + " agility\n" + this.Strength + " strength\n" + this.Stamina + " stamina\n" + this.CurrentEnergy + "/" + this.MaxEnergy + " energy\n" + this.Charisma + " charisma\n" + "Weapon: " + this.Weapon.Name);
 
         }
     }

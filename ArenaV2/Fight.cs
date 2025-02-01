@@ -34,7 +34,7 @@ namespace ArenaV2
             {
                 if (chanceToBeat < chanceToHit)
                 {
-                    deffender.CurrentHealth = deffender.CurrentHealth - attacker.Strength;
+                    deffender.CurrentHealth = deffender.CurrentHealth - (attacker.Strength + attacker.Weapon.DamageUpperBound);
                     PrintCharacterName(attacker);
                     Console.Write(" hit ");
                     PrintCharacterName(deffender);
@@ -86,8 +86,7 @@ namespace ArenaV2
                 else
                 {
                     Round(playerCharacter, npcCharacter);
-                }
-                    
+                }             
                 WhoseTurn++;
             }
 
@@ -95,6 +94,7 @@ namespace ArenaV2
             {
                 Console.WriteLine("You have defeated the Enemy");
                 playerCharacter.Gold = playerCharacter.Gold + playerCharacter.Charisma * 10;
+                Console.WriteLine($"You have {playerCharacter.Gold} gold");
                 playerCharacter.Experience = playerCharacter.Experience + npcCharacter.Level * 10;
             }
             else

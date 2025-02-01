@@ -6,24 +6,23 @@ using System.Threading.Tasks;
 
 namespace ArenaV2
 {
-    public class WeaponProperties
+    public class WeaponProperties : Item
     {
-        public string Name { get; set; }
-        public int Price { get; set; }
+
         public int DamageLowerBound { get; set; }
         public int DamageUpperBound { get; set; }
 
-        public WeaponProperties(string name, int price, int damageLowerBound, int damageUpperBound)
+        public WeaponProperties(string name, int price, int weight, int damageLowerBound, int damageUpperBound)
+            : base(name, price, weight)
+
         {
-            Name = name;
-            Price = price;
             DamageLowerBound = damageLowerBound;
             DamageUpperBound = damageUpperBound;
         }
 
         public void PrintWeaponProperties()
         {
-            Console.WriteLine("\nWeapon name: " + Name + "\nWeapon price: " + Price + "\n Damage: " + DamageLowerBound + " - " + DamageUpperBound);
+            Console.WriteLine("Weapon name: " + Name + "\nWeapon price: " + Price + "\nDamage: " + DamageLowerBound + " - " + DamageUpperBound);
         }
     }
 }

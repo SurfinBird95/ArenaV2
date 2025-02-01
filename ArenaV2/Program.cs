@@ -8,8 +8,10 @@ var playerCharacter = cpp.ReadInputLine();
 
 
 
-
+Shop shop = new Shop();
 Fight fight = new Fight();
+
+//shop.DisplayWeapons();
 
 while (playerCharacter.MaxHealth > 0)
 {
@@ -27,6 +29,14 @@ while (playerCharacter.MaxHealth > 0)
     Console.ForegroundColor = ConsoleColor.Red;
     Console.WriteLine("ROUND OVER");
     Console.ForegroundColor = ConsoleColor.Gray;
+
+    Console.WriteLine("\nDo you want to go to the weapon shop? Y/N");
+    string goToShop = Console.ReadLine();
+    if (goToShop.Equals("y", StringComparison.InvariantCultureIgnoreCase))
+    {
+        shop.Trade(playerCharacter);
+    }
+
     Thread.Sleep(2000);
 }
 
