@@ -65,6 +65,7 @@ namespace ArenaV2
                     {
                         Console.WriteLine("You have typed wrong number");
                     }
+                    wasParsed = false;
                 }
             }
         }
