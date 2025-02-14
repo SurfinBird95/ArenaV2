@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ArenaV2
 {
-    internal class ArmorProperties
+    public class ArmorProperties
     {
         public string Name { get; set; }
         public int Price { get; set; }
@@ -26,7 +26,7 @@ namespace ArenaV2
 
         public void PrintArmorProperties()
         {
-            Console.WriteLine("\nArmor name: " + Name + "\nArmor price: " + Price + "\n Armor value: " + ArmorValue + "\nWeight: " + ArmorWeight + " kg");
+            Console.WriteLine("\nArmor name: " + Name + "\nArmor price: " + Price + "\nArmor value: " + ArmorValue + "\nWeight: " + ArmorWeight + " kg");
         }
     }
 }
