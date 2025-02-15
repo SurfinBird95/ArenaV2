@@ -62,7 +62,7 @@ namespace ArenaV2
             int propertyVal = 0;
             while (!wasParsed)
             {
-                Console.WriteLine("Choose 1-5 by weapons position.\\nIf you want to quit, type 0");
+                Console.WriteLine("Choose 1-5 by weapons position.\nIf you want to quit, type 0");
                 string chosenWeaponPosition = Console.ReadLine();
                 if (chosenWeaponPosition.Equals("0")) return;
 
