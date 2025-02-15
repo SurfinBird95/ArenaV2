@@ -31,7 +31,14 @@ namespace ArenaV2
 
         public WeaponProperties Weapon = Shop.Weapons[0];
 
+<<<<<<< Updated upstream
+        public CharacterProperties(string name, int level, int health, int energy, int strength, int agility, int stamina, int charisma, int gold, int experience)
+=======
+        public WeaponProperties Weapon = Shop.Weapons[0];
+        public ArmorProperties Armor = Shop.Armors[0];
+
         public CharacterProperties(string name, int level, int strength, int agility, int stamina, int charisma, int gold, int experience)
+>>>>>>> Stashed changes
         {
             Name = name;
             Level = level;

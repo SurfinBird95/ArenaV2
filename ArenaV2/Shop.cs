@@ -17,7 +17,15 @@ namespace ArenaV2
             new WeaponProperties("Gladius", 500, 4, 10, 12)
         };
 
-        public void DisplayWeapons()
+        public static List<ArmorProperties> Armors = new List<ArmorProperties>()
+        {
+            new ArmorProperties("Rags",0,0,0,1),
+            new ArmorProperties("Cloth",100,5,10,1),
+            new ArmorProperties("Leather",300,20,30,3),
+            new ArmorProperties("Plate",500,50,50,15)
+        };
+
+        public void DisplayShopItems()
         {
 
             Console.WriteLine("Weapon List:\n");
@@ -28,11 +36,22 @@ namespace ArenaV2
                 weapon.PrintWeaponProperties();
                 index++;
             }
+
+            Console.WriteLine("Armor List:\n");
+
+            foreach (var armor in Armors)
+            {
+                Console.Write($"[{index}]");
+                armor.PrintArmorProperties();
+                index++;
+            }
+
         }
 
         public void Trade(PlayerCharacter playerCharacter)
         {
-            DisplayWeapons();
+            DisplayShopItems();
+
             Console.WriteLine($"You have {playerCharacter.Gold} gold");
 
             //Console.WriteLine("Do you want to buy any weapon? Choose 1-5 by weapons position.\nIf you want to quit, type 0");
