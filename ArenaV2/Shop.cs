@@ -19,10 +19,10 @@ namespace ArenaV2
 
         public static List<ArmorProperties> Armors = new List<ArmorProperties>()
         {
-            new ArmorProperties("Rags",0,0,0,1),
-            new ArmorProperties("Cloth",100,5,10,1),
-            new ArmorProperties("Leather",300,20,30,3),
-            new ArmorProperties("Plate",500,50,50,15)
+            new ArmorProperties("Rags",0,0,0,0,1),
+            new ArmorProperties("Cloth",100,5,5,10,1),
+            new ArmorProperties("Leather",300,20,20,30,3),
+            new ArmorProperties("Plate",500,50,50,50,15)
         };
 
         public void DisplayShopItems()
@@ -71,15 +71,26 @@ namespace ArenaV2
                 {
                     if (propertyVal >= 1 && propertyVal <= Weapons.Count)
                     {
-                        if (playerCharacter.Gold >= Weapons[propertyVal-1].Price)
+                        if (playerCharacter.Gold >= Weapons[propertyVal - 1].Price)
                         {
-                            playerCharacter.Weapon = Weapons[propertyVal-1];
+                            playerCharacter.Weapon = Weapons[propertyVal - 1];
                             playerCharacter.Gold = playerCharacter.Gold - playerCharacter.Weapon.Price;
                             return;
                         }
                         Console.WriteLine("You don't have enought gold");
-                        
+
                     }
+
+                    else if (propertyVal > Weapons.Count && propertyVal <= Weapons.Count + Armors.Count)
+                    {
+                        if (playerCharacter.Gold >= Armors[propertyVal - Weapons.Count - 1].Price)
+                        {
+                            playerCharacter.Armor = Armors[propertyVal - Weapons.Count - 1];
+                            playerCharacter.Gold = playerCharacter.Gold - playerCharacter.Armor.Price;
+                            return;
+                        }
+                    }
+
                     else
                     {
                         Console.WriteLine("You have typed wrong number");

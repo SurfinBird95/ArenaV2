@@ -34,7 +34,7 @@ namespace ArenaV2
             {
                 if (chanceToBeat < chanceToHit)
                 {
-                    deffender.CurrentHealth = deffender.CurrentHealth - (attacker.Strength + attacker.Weapon.DamageUpperBound);
+                    deffender.CurrentHealth = deffender.CurrentHealth - (attacker.Strength + attacker.Weapon.DamageUpperBound - deffender.Armor.ArmorValue);
                     PrintCharacterName(attacker);
                     Console.Write(" hit ");
                     PrintCharacterName(deffender);
@@ -70,10 +70,7 @@ namespace ArenaV2
 
         public void FightCalculator(PlayerCharacter playerCharacter, NPCCharacter npcCharacter)
         {
-            //bool playerTurn = false;
             int WhoseTurn = FightOrderRNG();
-            //int playerHealth = playerCharacter.MaxHealth;
-            //int npcHealth = npcCharacter.MaxHealth;
 
 
             while (playerCharacter.CurrentHealth > 0 && npcCharacter.CurrentHealth > 0)
