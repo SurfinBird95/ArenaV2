@@ -32,20 +32,31 @@ namespace ArenaV2
             double chanceToBeat = random.NextDouble();
             if (attacker.CurrentEnergy >= attacker.Strength)
             {
-                if (chanceToBeat < chanceToHit)
+
+                if (chanceToBeat > chanceToHit)
                 {
-                    deffender.CurrentHealth = deffender.CurrentHealth - (attacker.Strength + attacker.Weapon.DamageUpperBound - deffender.Armor.ArmorValue);
+                    PrintCharacterName(attacker);
+                    Console.WriteLine($" missed the opponent");
+                }
+
+                else if (deffender.Armor.ArmorValue > 0)
+                {
+                    deffender.Armor.ArmorValue = deffender.Armor.ArmorValue - (attacker.Strength + attacker.Weapon.DamageUpperBound);
+                    PrintCharacterName(attacker);
+                    Console.Write(" hit ");
+                    PrintCharacterName(deffender);
+                    Console.WriteLine($", his armor dropped to {deffender.Armor.ArmorValue}");
+                }
+
+                else
+                {
+                    deffender.CurrentHealth = deffender.CurrentHealth - (attacker.Strength + attacker.Weapon.DamageUpperBound);
                     PrintCharacterName(attacker);
                     Console.Write(" hit ");
                     PrintCharacterName(deffender);
                     Console.WriteLine($", his health dropped to {deffender.CurrentHealth}");
                 }
-                else
-                {
-                    PrintCharacterName(attacker);
-                    Console.WriteLine($" missed the opponent");
-                }
-                
+
                 attacker.CurrentEnergy = attacker.CurrentEnergy - attacker.Strength;
                 //PrintCharacterName(attacker);
                 //Console.WriteLine("'s energy is " + attacker.CurrentEnergy);

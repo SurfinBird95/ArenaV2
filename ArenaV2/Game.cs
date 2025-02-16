@@ -67,6 +67,7 @@ namespace ArenaV2
                 Console.ForegroundColor = ConsoleColor.Gray;
 
                 ShowAfterFight();
+                playerCharacter.Armor.ArmorValue = playerCharacter.Armor.ArmorMaxValue;
             }
         }
 
