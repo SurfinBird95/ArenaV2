@@ -10,16 +10,17 @@ namespace ArenaV2
 {
     public class Fight
     {
+
+        RNG rng = new RNG();
+
         private int FightOrderRNG()
         {
-            Random random = new Random();
-            int randomNumber = random.Next(1, 3);
+            int randomNumber = rng.createRandomIntNumber(1,3);
             return randomNumber;
         }
 
         private double CalculateChanceToHit(double attackerAgility, double deffenderAgility)
         {
-            //double hitChance = 0.5;
             double hitChance = attackerAgility / (attackerAgility + deffenderAgility);
             //Console.WriteLine("Chance to hit is " + hitChance);
             return hitChance;
@@ -41,7 +42,7 @@ namespace ArenaV2
 
                 else if (deffender.Armor.ArmorValue > 0)
                 {
-                    deffender.Armor.ArmorValue = deffender.Armor.ArmorValue - (attacker.Strength + attacker.Weapon.DamageUpperBound);
+                    deffender.Armor.ArmorValue = deffender.Armor.ArmorValue - (attacker.Strength + rng.createRandomIntNumber(attacker.Weapon.DamageUpperBound,attacker.Weapon.DamageLowerBound));
                     PrintCharacterName(attacker);
                     Console.Write(" hit ");
                     PrintCharacterName(deffender);

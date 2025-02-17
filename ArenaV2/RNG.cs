@@ -12,7 +12,8 @@ namespace ArenaV2
 
         private int upperRangeInt {get;set;}
 
-        private Random random;
+        Random random = new Random();
+
 
         public int createRandomIntNumber(int lowerRangeInt, int upperRangeInt)
         {
